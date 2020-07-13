@@ -6,6 +6,7 @@
     </head>
     <body>
         <script>
+
             function computerPlay() {
                 var gameOptions = [`Scissors`, `Rock`, `Paper`];
                 var randomNumber = Math.floor(Math.random() * gameOptions.length);
@@ -13,11 +14,35 @@
             }
             
             function playerChoice() {
-                let choice = prompt(`Rock, paper or scissors. What will it be?`)
-                return choice.slice(0,1).toUpperCase() +  choice.slice(1).toLowerCase()
+                playerSelection = prompt(`Rock, paper or scissors. What will it be?`).toLowerCase()
+                return playerSelection.slice(0,1).toUpperCase() +  playerSelection.slice(1).toLowerCase()
             }
 
-
+            function playRound(playerSelection, computerSelection) {
+                if (computerSelection == `Scissors` && playerSelection == `Rock`) 
+                    return alert(`You Win! Rock beats Scissors`);
+                
+                else if (computerSelection == `Rock` && playerSelection == `Paper`) 
+                    return alert(`You Win! Paper beats Rock!`);
+                
+                else if (computerSelection == `Paper` && playerSelection == `Rock`) 
+                    return alert(`You Lose! Paper beats Rock`);
+                
+                else if (computerSelection == `Paper` && playerSelection == `Scissors`) 
+                    return alert(`You Win! Scissors beats Paper!`);
+                
+                else if (computerSelection == `Scissors` && playerSelection == `Paper`) 
+                    return alert(`You Lose! Scissors beats Paper`);
+                
+                else if (computerSelection == `Rock` && playerSelection == `Scissors`) 
+                    return alert(`You Lose! Rock beats Scissors`);
+                
+                else if (computerSelection == playerSelection) return alert(`It's a tie!`);
+                else return alert(`Yikes, that ain't right! You can only play rock, paper or scissors.`);
+            }
+            var computerSelection = computerPlay();
+            var playerSelection = playerChoice();
+            playRound(playerSelection, computerSelection);
         </script>
     </body>
 </html>
