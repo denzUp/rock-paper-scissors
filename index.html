@@ -40,9 +40,12 @@
                 else if (computerSelection == playerSelection) return alert(`It's a tie!`);
                 else return alert(`Yikes, that ain't right! You can only play rock, paper or scissors.`);
             }
-            var computerSelection = computerPlay();
-            var playerSelection = playerChoice();
-            playRound(playerSelection, computerSelection);
+
+            for ( var i = 0; i < 5; i = ++i ) {
+                var computerSelection = computerPlay();
+                var playerSelection = playerChoice();
+                playRound(playerSelection, computerSelection);
+            }
         </script>
     </body>
 </html>
