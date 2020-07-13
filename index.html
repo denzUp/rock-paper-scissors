@@ -11,7 +11,13 @@
                 var randomNumber = Math.floor(Math.random() * gameOptions.length);
                 return gameOptions[randomNumber];
             }
-            console.log(computerPlay())
+            
+            function playerChoice() {
+                let choice = prompt(`Rock, paper or scissors. What will it be?`)
+                return choice.slice(0,1).toUpperCase() +  choice.slice(1).toLowerCase()
+            }
+
+
         </script>
     </body>
 </html>
