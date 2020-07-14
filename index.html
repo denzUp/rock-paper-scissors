@@ -14,9 +14,12 @@
             }
             
             function playerChoice() {
-                playerSelection = prompt(`Rock, paper or scissors. What will it be?`).toLowerCase()
+                playerSelection = prompt(`Rock, paper or scissors.\n       What will it be?`).toLowerCase()
                 return playerSelection.slice(0,1).toUpperCase() +  playerSelection.slice(1).toLowerCase()
             }
+
+            let playerScore = 0;
+            let computerScore = 0;
 
             function playRound(playerSelection, computerSelection) {
                 if (computerSelection == `Scissors` && playerSelection == `Rock`) 
@@ -40,12 +43,45 @@
                 else if (computerSelection == playerSelection) return alert(`It's a tie!`);
                 else return alert(`Yikes, that ain't right! You can only play rock, paper or scissors.`);
             }
-
+            
+            function calculateScores() {
+                if (computerSelection == `Scissors` && playerSelection == `Rock` || 
+                    computerSelection == `Rock` && playerSelection == `Paper` ||
+                    computerSelection == `Paper` && playerSelection == `Scissors`) {
+                    return playerScore += 1;
+                }
+                else if (computerSelection == playerSelection) {
+                    return playerScore += 0;
+                }
+                else {
+                    return computerScore += 1;
+                }
+            }
+            
+            function showResult() {
+                if (playerScore > computerScore) {
+                    return alert(`You Won! Final score ${playerScore} to ${computerScore}. Good job!`);
+                }
+                else if (playerScore < computerScore) {
+                    return alert(`Game Over! You Lost. Final score ${playerScore} to ${computerScore}. Hit F5 to try again.`);
+                }
+                else if (playerScore = computerScore) {
+                    return alert(`A bore draw! Booo!`);
+                }
+                else {
+                    return alert(`Yikes, that ain't right! You can only play rock, paper or scissors. Try again.`);
+                }
+            }
+            
             for ( var i = 0; i < 5; i = ++i ) {
                 var computerSelection = computerPlay();
                 var playerSelection = playerChoice();
                 playRound(playerSelection, computerSelection);
+                calculateScores();
             }
+            
+            showResult();
+
         </script>
     </body>
 </html>
